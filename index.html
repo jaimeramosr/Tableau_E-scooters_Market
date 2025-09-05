@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Project - Market Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #ccc;
+            margin: 40px 0;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        i {
+            color: #555;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Market Dashboard with Tableau</h1>
+
+    <p>
+        This project focuses on preparing and cleaning e-scooter market data using Excel, followed by the development of an executive-oriented dashboard in Tableau. The dashboard highlights key business insights and usage patterns.
+    </p>
+
+    <p align="center">
+        <img src="Images/Dashboard.png" alt="Dashboard" width="700">
+    </p>
+
+    <hr>
+
+    <h2>🛠️ Data Preparation with Excel</h2>
+
+    <i>1. Importing Data</i><br>
+    <p>
+        The original dataset (<i>"Raw_data.csv"</i>) was reviewed in Excel to understand its structure, identify irrelevant columns, and check data types.
+    </p>
+
+    <i>2. Data Cleaning</i><br>
+    <p>All cleaning steps were performed using Excel. Key steps included:</p>
+
+    <ul>
+        <li><b>Removing duplicates</b></li>
+        <li><b>Standardizing data</b>
+            <ul>
+                <li>Date columns were split into separate <i>date</i> and <i>time</i> fields.</li>
+                <li>Trip distance and duration were converted into kilometers and minutes (instead of meters and seconds).</li>
+            </ul>
+        </li>
+        <li><b>Dropping irrelevant columns/rows</b></li>
+    </ul>
+
+    <p>The final dataset is saved as (<i>"Clean_data.xlsx"</i>).</p>
+
+    <hr>
+
+    <h2>📈 Tableau Dashboard Development</h2>
+
+    <i>1. Importing Cleaned Data</i><br>
+    <p>
+        Cleaned data was imported into Tableau as .csv/.xlsx. Each column’s data type was validated, especially dates and times. Since Tableau requires a single field for time representation, a Calculated Field was created:
+    </p>
+    <pre><code>
+STR(DATEPART('hour',[Start Time]))
++ ':' +
+RIGHT('00' + STR(DATEPART('minute',[Start Time])),2)
+    </code></pre>
+
+    <i>2. Creating New Calculated Fields</i><br>
+    <p>
+        New Calculated Fields included: <b>Weekday, Average Trips per Day, Average Trips per Weekday, and Percent of Total Rides</b>.
+    </p>
+    <p>Examples:</p>
+    <pre><code>
+Weekday = DATENAME('weekday', [Start Date])
+Average Trips per Day = COUNT([Trip ID]) / COUNTD(DATE([Start Date]))
+    </code></pre>
+
+    <i>3. Dashboard Design</i><br>
+    <p>
+        The dashboard design followed executive reporting principles:
+    </p>
+    <ul>
+        <li>Focus on key KPIs.</li>
+        <li>Assessment of market and usage trends: monthly, weekly, and hourly rides, trip duration, trip distance, and trip origin/destination areas.</li>
+        <li>Comparison of market share among service providers.</li>
+    </ul>
+
+    <p>Visualizations used:</p>
+    <ul>
+        <li>Bar charts (monthly, daily, hourly usage)</li>
+        <li>Distribution plots (distance and duration of rides)</li>
+        <li>Pie charts (market share)</li>
+        <li>Tables (origin vs. destination areas)</li>
+    </ul>
+
+    <p align="center">
+        <img src="Images/Dashboard.png" alt="Dashboard" width="700">
+    </p>
+
+    <p>
+        Interactive filters enhance usability — allowing users to adjust by trip duration, distance, provider, weekday, or month.
+    </p>
+    <p align="center">
+        <img src="Images/Filters.png" alt="Filters" width="700">
+    </p>
+
+    <hr>
+
+    <h2>✅ Key Insights</h2>
+
+    <ul>
+        <li><b>September</b> shows the highest usage (37% of total), likely influenced by people returning to work/school after summer holidays. In contrast, colder months (November–December) show lower activity, indicating strong seasonality in scooter demand.</li>
+        <li><b>Weekends</b> outperform weekdays due to leisure time. Fleet deployment and battery charging should be maximized during weekends, while maintenance and battery swaps can be performed on weekday nights/mornings.</li>
+        <li><b>Peak daily usage</b> occurs from 16:00–20:00. Scooters should be fully charged and deployed before these hours.</li>
+        <li><b>Trip profile:</b> Most rides last < 20 minutes and cover < 5 km — confirming scooters are mainly used as last-mile transportation.</li>
+        <li><b>Market share:</b> Lime leads over Spin and Bird, holding a competitive advantage.</li>
+        <li><b>Geographic usage:</b> Lake View, Lincoln Park, and West Town account for most rides, suggesting these areas require higher fleet allocation.</li>
+    </ul>
+
+    <p>
+        Additional insights could be extracted if data on trip cost, revenue, profit, long-term trends (multi-year data), or user IDs were available. These would allow for profitability analysis, seasonal forecasting, and customer behavior tracking.
+    </p>
+
+</body>
+</html>

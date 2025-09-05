@@ -1,13 +1,5 @@
 # Tableau Project.
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>📊 Market Dashboard with Tableau</title>
-</head>
-<body>
-
 <h1>📊 Market Dashboard with Tableau</h1>
 <p>
 This project focuses on preparing and cleaning e-scooter market data using Excel, followed by the development of an executive-oriented dashboard in Tableau. The dashboard highlights key business insights and usage patterns.
@@ -80,7 +72,7 @@ The dashboard design followed executive reporting principles:
   <li>Bar charts (monthly, daily, hourly usage)</li>
   <li>Distribution plots (distance and duration of rides)</li>
   <li>Pie charts (market share)</li>
-  <li>Heatmaps (origin vs. destination areas)</li>
+  <li>Tables (origin vs. destination areas)</li>
 </ul>
 
 <p align="center">
