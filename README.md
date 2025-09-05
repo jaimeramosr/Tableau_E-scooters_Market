@@ -14,7 +14,7 @@ This project focuses on preparing and cleaning e-scooter market data using Excel
 
 <i>1. Importing Data</i><br>
 <p>
-The original dataset (<i>"Raw_data.csv"</i>) was reviewed in Excel to understand its structure, identify irrelevant columns, and check data types.
+The original dataset (<a href="https://www.kaggle.com/code/razamh/e-scooters-trips-analysis/input" target="_blank">available on Kaggle</a>) was examined in Excel to understand its structure, identify unnecessary columns, and verify data types.
 </p>
 
 <i>2. Data Cleaning</i><br>
@@ -31,7 +31,7 @@ The original dataset (<i>"Raw_data.csv"</i>) was reviewed in Excel to understand
   <li><b>Dropping irrelevant columns/rows</b></li>
 </ul>
 
-<p>The final dataset is saved as (<i>"Clean_data.xlsx"</i>).</p>
+<p>The final cleaned dataset cannot be shared due to its large file size.</p>
 
 <hr>
 
